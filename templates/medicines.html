@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicines — Easy Pharmacy 2.0</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="medicines-page">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <span class="logo-icon">⚕</span>
+                <span class="logo-text">Easy<strong>Pharmacy</strong></span>
+                <span class="logo-version">2.0</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/medicines">Medicines</a></li>
+                <li><a href="/consultation">Consultation</a></li>
+                <li><a href="/chatbot" class="nav-cta">AI Assistant</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Medicine Catalogue</h1>
+            <p style="opacity:0.8; margin-top:8px;">Browse our range of medicines. Ask MedBot for guidance on any of these.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="medicines-grid">
+            {% for med in medicines %}
+            <div class="medicine-card">
+                <div class="medicine-category">{{ med.category }}</div>
+                <div class="medicine-name">{{ med.name }}</div>
+                <div class="medicine-brand">Brand: {{ med.brand }}</div>
+                <div class="medicine-desc">{{ med.description }}</div>
+                <div class="medicine-footer">
+                    <span class="medicine-price">₹{{ med.price }}</span>
+                    <span class="stock-badge {% if med.stock %}in-stock{% else %}out-of-stock{% endif %}">
+                        {% if med.stock %}In Stock{% else %}Out of Stock{% endif %}
+                    </span>
+                </div>
+                <button onclick="askAbout('{{ med.name }}')" class="btn btn-outline" style="width:100%; margin-top:12px; justify-content:center;">
+                    Ask MedBot about this
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <nav class="mobile-nav">
+    <div class="mobile-nav-links">
+        <a href="/" class="mobile-nav-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+            Home
+        </a>
+        <a href="/medicines" class="mobile-nav-link active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.3 1.5 4.05 3 5.5l7 7 7-7z"/></svg>
+            Medicines
+        </a>
+        <a href="/chatbot" class="mobile-nav-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            MedBot
+        </a>
+        <a href="/consultation" class="mobile-nav-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            Consult
+        </a>
+    </div>
+</nav>
+    <script>
+        function askAbout(medicineName) {
+            sessionStorage.setItem('prefillQuestion', 'Tell me about ' + medicineName + ' — uses, dosage, and side effects.');
+            window.location.href = '/chatbot';
+        }
+    </script>
+</body>
+</html>

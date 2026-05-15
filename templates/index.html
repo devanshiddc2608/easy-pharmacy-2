@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easy Pharmacy 2.0 — Your Health, Simplified</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="landing-page">
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="nav-logo">
+                <span class="logo-icon">⚕</span>
+                <span class="logo-text">Easy<strong>Pharmacy</strong></span>
+                <span class="logo-version">2.0</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/medicines">Medicines</a></li>
+                <li><a href="/consultation">Consultation</a></li>
+                <li><a href="/chatbot" class="nav-cta">AI Assistant</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Powered by Llama 3.3 · Groq
+            </div>
+            <h1 class="hero-title">
+                Your Health Questions,<br>
+                <em>Answered Instantly.</em>
+            </h1>
+            <p class="hero-subtitle">
+                Ask about medicines, side effects, drug interactions, and more —
+                in plain English. No jargon. No waiting.
+            </p>
+            <div class="hero-actions">
+                <a href="/chatbot" class="btn btn-primary btn-lg">
+                    <span>Chat with MedBot</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="/medicines" class="btn btn-outline btn-lg">Browse Medicines</a>
+            </div>
+            <div class="hero-disclaimer">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                MedBot provides general health information only. Always consult a doctor for medical advice.
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="chat-preview">
+                <div class="preview-header">
+                    <div class="preview-avatar">⚕</div>
+                    <div>
+                        <div class="preview-name">MedBot</div>
+                        <div class="preview-status">● Online</div>
+                    </div>
+                </div>
+                <div class="preview-messages">
+                    <div class="preview-msg user-msg">Is ibuprofen safe with paracetamol?</div>
+                    <div class="preview-msg bot-msg">
+                        Yes, <strong>ibuprofen</strong> and <strong>paracetamol</strong> can generally be taken together safely — they work via different mechanisms...
+                        <span class="typing-dots"><span></span><span></span><span></span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Everything you need, in one place</h2>
+            <div class="features-grid">
+                <div class="feature-card" onclick="window.location='/chatbot'">
+                    <div class="feature-icon ai-icon">🤖</div>
+                    <h3>AI Medical Assistant</h3>
+                    <p>Ask any medicine-related question in plain English. Get clear, contextual answers with conversation memory.</p>
+                    <span class="feature-link">Ask a question →</span>
+                </div>
+                <div class="feature-card" onclick="window.location='/medicines'">
+                    <div class="feature-icon med-icon">💊</div>
+                    <h3>Medicine Catalogue</h3>
+                    <p>Browse hundreds of medicines with detailed information on uses, dosage, and availability.</p>
+                    <span class="feature-link">Browse medicines →</span>
+                </div>
+                <div class="feature-card" onclick="window.location='/consultation'">
+                    <div class="feature-icon doc-icon">👨‍⚕️</div>
+                    <h3>Doctor Consultation</h3>
+                    <p>Book a video consultation with a licensed doctor from the comfort of your home.</p>
+                    <span class="feature-link">Book appointment →</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sample Questions Section -->
+    <section class="sample-questions">
+        <div class="container">
+            <h2 class="section-title">What can you ask?</h2>
+            <div class="questions-grid">
+                <div class="question-chip" onclick="goToChat(this.textContent)">Is metformin safe for long-term use?</div>
+                <div class="question-chip" onclick="goToChat(this.textContent)">Can I take antacids with antibiotics?</div>
+                <div class="question-chip" onclick="goToChat(this.textContent)">What are the side effects of cetirizine?</div>
+                <div class="question-chip" onclick="goToChat(this.textContent)">Best OTC medicine for cold and cough?</div>
+                <div class="question-chip" onclick="goToChat(this.textContent)">Is ibuprofen safe during pregnancy?</div>
+                <div class="question-chip" onclick="goToChat(this.textContent)">How to store insulin at home?</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">⚕</span>
+                    <span>Easy<strong>Pharmacy</strong> 2.0</span>
+                </div>
+                <p class="footer-disclaimer">
+                    This application is a portfolio project for educational purposes. 
+                    Information provided is not a substitute for professional medical advice.
+                </p>
+            </div>
+        </div>
+    </footer>
+    <!-- Mobile Bottom Navigation -->
+<nav class="mobile-nav">
+    <div class="mobile-nav-links">
+        <a href="/" class="mobile-nav-link active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+            Home
+        </a>
+        <a href="/medicines" class="mobile-nav-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.3 1.5 4.05 3 5.5l7 7 7-7z"/></svg>
+            Medicines
+        </a>
+        <a href="/chatbot" class="mobile-nav-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            MedBot
+        </a>
+        <a href="/consultation" class="mobile-nav-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            Consult
+        </a>
+    </div>
+</nav>
+    <script>
+        function goToChat(question) {
+            // Store the question in sessionStorage so chatbot.html can pre-fill it
+            sessionStorage.setItem('prefillQuestion', question);
+            window.location.href = '/chatbot';
+        }
+    </script>
+
+</body>
+</html>
