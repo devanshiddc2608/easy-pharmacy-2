@@ -108,6 +108,8 @@ easy-pharmacy-2/
 
 This application provides general health information only and is not a substitute for professional medical advice. Always consult a licensed healthcare professional for medical decisions.
 
+## 🔗 Try out the MedBot here - https://easy-pharmacy-2.onrender.com
+
 ---
 
 Built by Devanshi · MBA (IT) · SICSR, Pune
