@@ -56,22 +56,22 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>First Name</label>
-                    <input type="text" placeholder="Priya" required>
+                    <input type="text" placeholder="Priya" id="firstName" required>
                 </div>
                 <div class="form-group">
                     <label>Last Name</label>
-                    <input type="text" placeholder="Sharma" required>
+                    <input type="text" placeholder="Sharma" id="lastName" required>
                 </div>
             </div>
 
             <div class="form-group">
                 <label>Email Address</label>
-                <input type="email" placeholder="priya@example.com" required>
+                <input type="email" placeholder="priya@example.com" id="email" required>
             </div>
 
             <div class="form-group">
                 <label>Phone Number</label>
-                <input type="tel" placeholder="+91 98765 43210" required>
+                <input type="tel" placeholder="+91 98765 43210" id="phone" required>
             </div>
 
             <div class="form-row">
@@ -88,13 +88,13 @@
                 </div>
                 <div class="form-group">
                     <label>Preferred Date</label>
-                    <input type="date" required>
+                    <input type="date" id="date" required>
                 </div>
             </div>
 
             <div class="form-group">
                 <label>Describe your concern</label>
-                <textarea placeholder="Briefly describe your symptoms or reason for consultation..." required></textarea>
+                <textarea id="concern" placeholder="Briefly describe your symptoms or reason for consultation..." required></textarea>
             </div>
 
             <button class="btn btn-primary btn-lg submit-btn" onclick="submitForm()">
@@ -132,11 +132,33 @@
     </div>
 </nav>
     <script>
-        function submitForm() {
-            document.getElementById('successMsg').style.display = 'block';
-            document.querySelector('.submit-btn').disabled = true;
-            document.querySelector('.submit-btn').textContent = 'Submitted ✓';
+    function submitForm() {
+        // Manually check all required fields
+        const fields = [
+            { id: 'firstName', label: 'First Name' },
+            { id: 'lastName', label: 'Last Name' },
+            { id: 'email', label: 'Email Address' },
+            { id: 'phone', label: 'Phone Number' },
+            { id: 'date', label: 'Preferred Date' },
+            { id: 'concern', label: 'Concern' },
+        ];
+
+        for (const field of fields) {
+            const el = document.getElementById(field.id);
+            if (!el.value.trim()) {
+                el.focus();
+                el.style.borderColor = '#dc2626';
+                alert(`Please fill in: ${field.label}`);
+                return;
+            }
+            el.style.borderColor = '';
         }
-    </script>
+
+        // All fields filled — show success
+        document.getElementById('successMsg').style.display = 'block';
+        document.querySelector('.submit-btn').disabled = true;
+        document.querySelector('.submit-btn').textContent = 'Submitted ✓';
+    }
+</script>
 </body>
 </html>
