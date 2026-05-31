@@ -5,7 +5,6 @@
  */
 
 // ─── State ────────────────────────────────────────────────────────────────────
-console.log("chat.js is loading");
 let isLoading = false; // prevent double-sends
 
 // ─── Initialisation ──────────────────────────────────────────────────────────
@@ -50,13 +49,11 @@ async function loadHistory() {
         const response = await fetch("/api/history");
         const data = await response.json();
 
-        console.log("History loaded:", data.history.length, "messages"); // ADD THIS LINE
-
+        
         if (data.history && data.history.length > 0) {
             hideWelcomeScreen();
             data.history.forEach((msg) => {
                 const role = msg.role === "assistant" ? "bot" : "user";
-                console.log("Rendering:", role, msg.content.substring(0, 30)); // ADD THIS LINE
                 appendMessage(role, msg.content);
             });
         }

@@ -17,16 +17,8 @@ app = Flask(__name__)
 import secrets
 app.secret_key = os.environ.get("SECRET_KEY") or secrets.token_hex(16)
 
-# ─── Clear all sessions on server start ──────────────────────────────────────
-@app.before_request
-def clear_old_sessions():
-    """Force fresh session if server has restarted"""
-    if not session.get("_server_start"):
-        session.clear()
-        session["_server_start"] = True
 app.config["SESSION_COOKIE_SIZE"] = 4096
 app.config["SESSION_PERMANENT"] = False
-app.config["SECRET_KEY"] = app.secret_key
 
 # ─── Groq Configuration ──────────────────────────────────────────────────────
 
