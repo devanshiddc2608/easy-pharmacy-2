@@ -34,7 +34,7 @@ Easy Pharmacy 2.0 is a healthcare web platform that lets users ask medicine-rela
 ### 1. Clone and install
 
 ```bash
-git clone https://github.com/yourusername/easy-pharmacy-2.git
+git clone https://github.com/devanshiddc2608/easy-pharmacy-2
 cd easy-pharmacy-2
 python -m venv venv
 source venv/bin/activate      # Windows: venv\Scripts\activate
